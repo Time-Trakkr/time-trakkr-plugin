@@ -1,0 +1,39 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "time-trakkr",
+  "version": "1.0.0",
+  "description": "Connect your Time Trakkr workspace: ask about tracked time, budgets and profitability, log time, run timers, and draft invoices, under your own role.",
+  "author": {
+    "name": "Time Trakkr",
+    "email": "hello@timetrakkr.com",
+    "url": "https://timetrakkr.com"
+  },
+  "homepage": "https://timetrakkr.com/integrations/mcp",
+  "repository": "https://github.com/Time-Trakkr/time-trakkr-plugin",
+  "license": "MIT",
+  "keywords": ["time tracking", "timesheets", "invoicing", "budgets", "agencies"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Time Trakkr",
+        "shortDescription": "Time, budgets and invoices",
+        "longDescription": "Time Trakkr is time tracking, budgets and invoicing for agencies and freelancers. Connect your workspace to ask how many hours your team tracked and on what, which projects are close to or over budget, which clients have time that has not been invoiced yet, and how profitable a project is. You can also log time, start and stop a timer, and correct your own entries.\n\nInvoices are only ever drafted: Time Trakkr creates a draft for you to review and send yourself in the app, and never sends anything to a client.\n\nYou sign in with your Time Trakkr account, and every request follows the same permissions as the app. Members never see rates or other money, only owners and admins can draft invoices, and you choose read-only or read and write access when you connect. Disconnect at any time under Integrations in Time Trakkr.",
+        "developerName": "Time Trakkr",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://timetrakkr.com",
+        "supportURL": "https://timetrakkr.com/contact",
+        "privacyPolicyURL": "https://timetrakkr.com/privacy",
+        "termsOfServiceURL": "https://timetrakkr.com/terms",
+        "defaultPrompt": [
+          "How many hours did my team track last week, by project?",
+          "Which projects are close to or over their budget?",
+          "Draft an invoice for Northwind's uninvoiced time from last month."
+        ],
+        "brandColor": "#2F7D44",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      }
+    }
+  }
+}
