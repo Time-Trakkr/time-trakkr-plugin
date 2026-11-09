@@ -14,7 +14,9 @@ and `mcp.json` points at the Time Trakkr MCP server,
 Custom plugins need a paid Perplexity plan.
 
 1. In Perplexity, open **Plugins → Add custom → Import plugin from GitHub**.
-2. Paste `https://github.com/Time-Trakkr/time-trakkr-plugin`.
+2. Paste `https://github.com/time-trakkr/time-trakkr-plugin`, in lowercase
+   exactly as written. Perplexity does not find the repository with capital
+   letters in the owner name.
 3. Open the Time Trakkr connector the plugin adds and sign in with your Time
    Trakkr account. Choose read-only, or read and write if you want to log time
    and draft invoices.
