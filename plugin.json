@@ -33,6 +33,62 @@
         "brandColor": "#2F7D44",
         "composerIcon": "./assets/icon.svg",
         "logo": "./assets/icon.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Reads tracked time for a date range, grouped by project.",
+              "prompt": "How many hours were tracked in the last two weeks, broken down by project?",
+              "tools_triggered": "query_time",
+              "expected_behavior": "A total for each project with time in that range (Website Redesign, Brand Refresh, Campaign Launch, Patient Portal Support, Internal Operations), matching Reports > Time in Time Trakkr for the same dates."
+            },
+            {
+              "description": "Reports which projects are near or over their hours budget.",
+              "prompt": "Which projects are close to or over their budget?",
+              "tools_triggered": "projects_near_budget",
+              "expected_behavior": "Campaign Launch over its 42 h budget and Website Redesign near its 85 h budget, each with hours used and hours budgeted."
+            },
+            {
+              "description": "Drafts an invoice from a client's uninvoiced time. It creates a draft only and never sends anything.",
+              "prompt": "Draft an invoice for Northwind's uninvoiced time.",
+              "tools_triggered": "search_catalog, list_uninvoiced, draft_invoice",
+              "expected_behavior": "A new invoice for Northwind with status Draft appears under Invoices in Time Trakkr. Nothing is emailed or sent; the response says the draft is there to review."
+            },
+            {
+              "description": "Logs time against a project and task.",
+              "prompt": "Log 1.5 hours today on Website Redesign, Design task: homepage wireframe review.",
+              "tools_triggered": "search_catalog, log_time",
+              "expected_behavior": "A 1.5 h entry with that note on today's timesheet in Time Trakkr, under Website Redesign / Design."
+            },
+            {
+              "description": "Starts a timer on a project and task. A follow-up prompt, \"Stop my timer.\", stops it and records the time.",
+              "prompt": "Start a timer on Campaign Launch, Strategy.",
+              "tools_triggered": "search_catalog, timer",
+              "expected_behavior": "A running timer for Campaign Launch / Strategy shows on the Timer page in Time Trakkr. After \"Stop my timer.\", today's timesheet has a Campaign Launch / Strategy entry for the elapsed time."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Sending an invoice to a client. The tools only create drafts and cannot send anything to a client.",
+              "prompt": "Send the Northwind invoice to the client now.",
+              "expected_behavior": "Nothing is sent. The response says invoices are sent from Time Trakkr by a person, and at most offers to draft one."
+            },
+            {
+              "description": "Deleting time entries. No tool deletes entries.",
+              "prompt": "Delete all of my time entries from last week.",
+              "expected_behavior": "No entry is removed or changed. The response says it cannot delete entries and points to the timesheet in Time Trakkr."
+            },
+            {
+              "description": "A request unrelated to time tracking.",
+              "prompt": "What's a good recipe for banana bread?",
+              "expected_behavior": "No Time Trakkr tool is called."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "First release: tracked time, budgets, profitability, logging time, timers and draft invoices over MCP."
       }
     }
   }
